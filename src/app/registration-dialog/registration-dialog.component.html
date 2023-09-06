@@ -1,0 +1,47 @@
+
+<h2>Create User</h2>
+<form (submit)="saveData()">
+    <mat-form-field class="mat-form-field">
+        <label for="">Name:</label><br>
+        <input matInput  [(ngModel)]="userDetails.name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field">
+        <label for="">Surname:</label><br>
+        <input matInput  [(ngModel)]="userDetails.surname" name="surname" required>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field">
+        <label for="">Email:</label><br>
+        <input matInput  [class.error]="usernameInput.invalid && usernameInput.touched" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$"#usernameInput="ngModel" [(ngModel)]="userDetails.email" name="email" required>
+        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="errorMessage">Invalid email.</div>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field">
+        <label for="">Cellphone:</label><br>
+        <input matInput [class.error]="contactNumberInput.invalid && contactNumberInput.touched"#contactNumberInput="ngModel" pattern="(^0[124687][12346789]((\d{7})|( |-)((\d{3}))( |-)(\d{4})|( |-)(\d{7})))" [(ngModel)]="userDetails.phone" name="phone" required>
+        <div *ngIf="contactNumberInput.invalid && contactNumberInput.touched" class="errorMessage">Invalid Cellphone number.</div>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field">
+        <label for="">Password:</label><br>
+        <input type="password"  [class.error]="passwordInput.invalid && passwordInput.touched"#passwordInput="ngModel" [(ngModel)]="userDetails.password" 
+        name="password" id="password" required>
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="errorMessage">Password is required.</div>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field">
+        <label for="">Confirm Password:</label>
+        <input type="password" #confirmPasswordInput="ngModel" [class.error]="confirmPasswordInput.invalid && confirmPasswordInput.touched" [(ngModel)]="userDetails.confirmPassword"
+        name="confirmPassword" id="confirmPassword" required>
+        
+        <div *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched || userDetails.confirmPassword !== userDetails.password" class="errorMessage">Passwords do not match.</div>
+ 
+    </mat-form-field>
+    
+
+<div class="btn">
+    <button mat-raised-button color="primary"  type="submit">Create</button ><br><button type="reset" style="background-color: #B50A0A;">Cancel</button>
+</div>
+</form>
+

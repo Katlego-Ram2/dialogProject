@@ -1,0 +1,12 @@
+<div class="login-form">
+
+    <div class="main-contents">
+        <h1>login</h1>
+        <label for="">Username:</label>
+        <input id="textbox" [(ngModel)]="userData.email" type="email">
+        <label for="">Password:</label>
+        <input type="password" id="textbox" [(ngModel)]="userData.password" name="Password">
+        <button (click)=" checkCredentials()">Sign In</button>
+    </div>
+
+</div>

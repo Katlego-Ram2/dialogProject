@@ -1,0 +1,27 @@
+<div class="main_body">
+    <div class="top-btn">
+ <button  mat-raised-button color="primary" (click)="openRegistrationDialog()">Create</button><button style="background-color: #B50A0A;" (click)="removeRow()">Remove User</button>
+   
+</div>
+<div class="form_body">
+  
+      <table>
+        <tr>
+          <th><b>Name</b></th>
+          <th><b>Surname</b></th>
+          <th><b>Email</b></th>
+          <th><b>Cellphone</b></th>
+      
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.surname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone}}</td>
+          <td><button class="remove" (click)="removeRow1(user)">Remove</button></td> 
+        </tr>
+      </table>
+  
+    </div>
+    <a routerLink="/login">Logout</a>
+  </div>
